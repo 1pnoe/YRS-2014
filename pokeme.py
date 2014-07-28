@@ -4,7 +4,9 @@
 
 import requests
 import pprint
+import json
 
+"""
 name = ""
 national_id = ""
 types = ""
@@ -14,16 +16,19 @@ sp_atk = ""
 sp_def = ""
 speed = ""
 total = ""
+"""
 
-#body = {"name": name,
- #       "national_id": national_id,
-  #      "types": types,
-   #     "attack": attack,
-    #    "defence": defence,
-     #   "sp_atk": sp_atk,
-      #  "sp_def": sp_def,
-       # "speed": speed,
-        #"total": total}
+"""
+body = {"name": name,
+        "national_id": national_id,
+        "types": types,
+        "attack": attack,
+        "defence": defence,
+        "sp_atk": sp_atk,
+        "sp_def": sp_def,
+        "speed": speed,
+        "total": total}
+"""
 
 #Entry from user on website
 pokemon_id = "1/"
@@ -32,11 +37,23 @@ pokemon_id = "1/"
 endpoint = "http://pokeapi.co/api/v1/pokemon/"
 
 #Requesting a response from the API using the given "pokemon_id"
-response = requests.get( endpoint, params=pokemon_id)
+response = requests.get( endpoint + pokemon_id, )
+
+url = response.url
+print (url)
 
 #variable which stores that data from the API request
-data= response.json
+data= response.content
 
-pprint.pprint(data)
+var = json.loads(str(data))
 
-print (data.name)
+#items = data["abilities"]["attack"]
+#print (items)
+
+"""
+for item in data:
+    print (item)
+"""
+
+pprint.pprint(var["abilities"])
+
