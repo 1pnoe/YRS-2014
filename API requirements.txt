@@ -1,0 +1,9 @@
+name
+national_id
+types
+attack 
+defence
+sp_atk
+sp_def
+speed
+total (maybe)
