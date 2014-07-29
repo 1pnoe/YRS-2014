@@ -5,8 +5,10 @@ import requests
 import pprint
 import json
 
+pokemon_number = raw_input("Please enter pokemon number: ")
+
 #Entry from user on website
-pokemon_id = "1/"
+pokemon_id = "%s/" % (pokemon_number, )
 
 #The URL of the API
 endpoint = "http://pokeapi.co/api/v1/pokemon/"
@@ -28,31 +30,27 @@ pdict = json.loads(str(data))
 #Fetches the name of the first ability in the "1" pokemon dictionary
 #name =(pdict["abilities"][1]["name"])
 
-"""
-for x in pdicts["types"]:
-    return x["name"]
-"""
-
+#Iterates through the dictionaries contained within the 'Types' list
 def types_function(typ):
     y = []
     for x in typ:
-        y.append(x["name"])
+        y.append(str(x["name"]))
     return y
 
+#Pulls the indivitul items from the JSON dictionary and assigns them to variables
 name = str(pdict["name"])
-national_id = str(pdict["national_id"])
-types = types_function(pdict["types"])
-attack = str(pdict["attack"])
-defense = str(pdict["defense"])
-sp_atk = str(pdict["sp_atk"])
-sp_def = str(pdict["sp_def"])
-speed = str(pdict["speed"])
-total = str(pdict["total"])
+national_id = int(pdict["national_id"])
+types = str(types_function(pdict["types"]))
+attack = int(pdict["attack"])
+defense = int(pdict["defense"])
+sp_atk = int(pdict["sp_atk"])
+sp_def = int(pdict["sp_def"])
+speed = int(pdict["speed"])
 
-print types
- 
+print
 
 
+#Puts the JSON variables into a new dictionary
 body = {"name": name,
         "national_id": national_id,
         "types": types,
@@ -60,7 +58,9 @@ body = {"name": name,
         "defense": defense,
         "sp_atk": sp_atk,
         "sp_def": sp_def,
-        "speed": speed,
-        "total": total}
+        "speed": speed}
 
-print body 
+for key, value in body.items():
+    print str(key) + ": " + str(value)
+
+    
