@@ -1,4 +1,3 @@
-# -*- coding: cp1252 -*-
 """Using the pokeAPI to compare between different pokemon"""
 
 #Importing the appropriate lib
@@ -675,7 +674,7 @@ pokedex = {
     'Vivillon': 666,
     'Litleo': 667,
     'Pyroar': 668,
-    'Flabébé': 669,
+    'Flabebe': 669,
     'Floette': 670,
     'Florges': 671,
     'Skiddo': 672,
@@ -796,9 +795,20 @@ for key, value in body_1.items():
 
 print "-------------------------------------------------"
 
-pokemon_number_2 = raw_input("Please enter the second pokemon number: ")
+def RepresentsInt(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
 
-pokemon_id_2 = "%s/" % (pokemon_number_2, )
+def user_input_2(x):
+    if RepresentsInt(x):
+        return int(x)
+    else:
+        return pokedex[x]
+
+pokemon_id_2 = "%s/" % (user_input_2((raw_input("Please enter pokemon name or number: "))), )
 
 endpoint_2 = "http://pokeapi.co/api/v1/pokemon/"
 
@@ -866,8 +876,31 @@ type_matrix = [
     [1,0.5,0.5,0.5,1,2,1,1,1,1,1,1,2,1,1,1,0.5,2],
     [1,0.5,1,1,1,1,2,0.5,1,1,1,1,1,1,2,2,0.5,1]]
 
-grass = 0
-electric = 1
+type_dict = {
+    'normal': 1,
+    'fire': 2,
+    'water': 3,
+    'electric': 4,
+    'grass': 5,
+    'ice': 6,
+    'fighting': 7,
+    'poison': 8,
+    'ground': 9,
+    'flying': 10,
+    'psychic': 11,
+    'bug': 12,
+    'rock': 13,
+    'ghost': 14,
+    'dragon': 15,
+    'dark': 16,
+    'steel': 17,
+    'fairy': 18}
+
+
+multiplier = type_matrix[int(type_dict[types_1[0]])][int(type_dict[types_2[0]])]
+print multiplier
+
+
 
 average_difference = abs(average_1-average_2)
 
@@ -877,5 +910,5 @@ elif average_1 < average_2:
     print ("%s beats %s with a average point differnce of %s" % (name_2, name_1, str(average_difference), ))
 else:
     print ("Stalemate! Both %s and %s have the same average point score" % (name_1, name_2, ))
-    
+
 

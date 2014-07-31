@@ -18,44 +18,30 @@ type_matrix = [
     [1,0.5,0.5,0.5,1,2,1,1,1,1,1,1,2,1,1,1,0.5,2],
     [1,0.5,1,1,1,1,2,0.5,1,1,1,1,1,1,2,2,0.5,1]]
 
+type_dict = {
+    'normal': 1,
+    'fire': 2,
+    'water': 3,
+    'electric': 4,
+    'grass': 5,
+    'ice': 6,
+    'fighting': 7,
+    'poison': 8,
+    'ground': 9,
+    'flying': 10,
+    'psychic': 11,
+    'bug': 12,
+    'rock': 13,
+    'ghost': 14,
+    'dragon': 15,
+    'dark': 16,
+    'steel': 17,
+    'fairy': 18}
 
-normal = [0]
-fire = [1]
-water = [2]
-electric = [3]
-grass = [4]
-ice = [5]
-fighting = [6]
-poison = [7]
-ground = [8]
-flying = [9]
-psychic = [10]
-bug = [11]
-rock = [12]
-ghost = [13]
-dragon = [14]
-dark = [15]
-steel = [16]
-fairy = [17]
+types_1 = "grass"
+types_2 = "ground"
 
-def matrix_retrieve(y):
-    type_matrix[
-x_axis = 
-def matrix_sort(x):
-    if x == "normal":
-        return matrix_1(0)
-        
-    
-
-class types_class(object):
-    def __init__(self, types_1, types_2):
-        self.type_1 = type_1
-        self.type_2 = type_2
-        
-    def x(self, type_1, type_2):
-        return 
-        
-
-print type_matrix[3][3]
+multiplier = type_matrix[type_dict[types_1]][type_dict[types_2]]
+print multiplier
 
 
