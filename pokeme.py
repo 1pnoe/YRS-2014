@@ -896,18 +896,23 @@ type_dict = {
     'steel': 17,
     'fairy': 18}
 
+multiplier_1 = []
 
+for i in range(len(types_1)):
+    multiplier_1.append(type_matrix[type_dict[types_1[int(i)]]][type_dict[types_2[int(i)]]])
+    print multiplier_1
+"""
 multiplier = type_matrix[int(type_dict[types_1[0]])][int(type_dict[types_2[0]])]
 print multiplier
-
+"""
 
 
 average_difference = abs(average_1-average_2)
 
 if average_1 > average_2:
-    print ("%s beats %s with a average point differnce of %s" % (name_1, name_2, str(average_difference), ))
+    print ("%s beats %s with an average point differnce of %s" % (name_1, name_2, str(average_difference), ))
 elif average_1 < average_2:
-    print ("%s beats %s with a average point differnce of %s" % (name_2, name_1, str(average_difference), ))
+    print ("%s beats %s with an average point differnce of %s" % (name_2, name_1, str(average_difference), ))
 else:
     print ("Stalemate! Both %s and %s have the same average point score" % (name_1, name_2, ))
 
